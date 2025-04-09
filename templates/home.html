@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Ali's Halal Food Restaurant</h1>
+        <p>Authentic halal cuisine made with love and tradition</p>
+        <a href="{% url 'booking:booking_form' %}" class="btn-primary">Book a Table</a>
+    </div>
+</section>
+<section class="featured-menu">
+    <h2>Our Featured Menu</h2>
+    <div class="menu-items">
+        {% for item in featured_items %}
+        <div class="menu-item">
+            {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.name }}">
+            {% endif %}
+            <h3>{{ item.name }}</h3>
+            <p class="price">${{ item.price }}</p>
+            <p class="description">{{ item.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'menu:menu_list' %}" class="btn-secondary">View Full Menu</a>
+</section>
+{% endblock %}
