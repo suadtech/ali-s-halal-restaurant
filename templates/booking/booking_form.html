@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="booking-section">
+    <div class="container">
+        <h1>Book a Table</h1>
+        <div class="booking-form">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.booking_date.id_for_label }}">Date</label>
+                    {{ form.booking_date }}
+                    {% if form.booking_date.errors %}
+                    <div class="error">{{ form.booking_date.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.booking_time.id_for_label }}">Time</label>
+                    {{ form.booking_time }}
+                    {% if form.booking_time.errors %}
+                    <div class="error">{{ form.booking_time.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.guests.id_for_label }}">Number of Guests</label>
+                    {{ form.guests }}
+                    {% if form.guests.errors %}
+                    <div class="error">{{ form.guests.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.special_requests.id_for_label }}">Special Requests</label>
+                    {{ form.special_requests }}
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn-primary">Book Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

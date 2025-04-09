@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="menu-section">
+    <div class="container">
+        <h1>Our Menu</h1>
+        
+        {% for category in categories %}
+        <div class="menu-category">
+            <h2>{{ category.name }}</h2>
+            <div class="menu-items">
+                {% for item in menu_items %}
+                    {% if item.category == category %}
+                    <div class="menu-item">
+                        <h3>{{ item.name }}</h3>
+                        <p class="price">${{ item.price }}</p>
+                        <p class="description">{{ item.description }}</p>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
